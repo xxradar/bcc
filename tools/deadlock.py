@@ -375,7 +375,7 @@ def symbolize_with_objdump(binary, addr):
             'objdump -tT %s | grep %x | awk {\'print $NF\'} | c++filt' %
             (binary, addr)
         )
-        output = subprocess.check_output(command, shell=True)
+        output = subprocess.check_output(command, shell=False)
         return output.decode('utf-8').strip()
     except subprocess.CalledProcessError:
         return ''

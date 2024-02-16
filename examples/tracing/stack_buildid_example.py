@@ -33,7 +33,7 @@ def Get_libc_path():
   # A small helper function that returns full path
   # of libc in the system
   cmd = 'cat /proc/self/maps | grep libc | awk \'{print $6}\' | uniq'
-  output = subprocess.check_output(cmd, shell=True)
+  output = subprocess.check_output(cmd, shell=False)
   if not isinstance(output, str):
     output = output.decode()
   return output.split('\n')[0]
