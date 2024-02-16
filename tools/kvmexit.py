@@ -272,8 +272,8 @@ except Exception as e:
 def find_tid(tgt_dir, tgt_vcpu):
     for tid in os.listdir(tgt_dir):
         path = tgt_dir + "/" + tid + "/comm"
-        fp = open(path, "r")
-        comm = fp.read()
+        with open(path, "r") as fp:
+            comm = fp.read()
         if (comm.find(tgt_vcpu) != -1):
             return tid
     return -1
